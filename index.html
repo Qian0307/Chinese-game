@@ -9,7 +9,6 @@
 <body>
   <!-- decorative animated ink at the right edge -->
   <div id="ink-edge" aria-hidden="true" class="ink-edge">
-    <!-- simple SVG ink-blot with subtle gradient and texture -->
     <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="inkGrad" cx="30%" cy="20%" r="80%">
@@ -25,8 +24,8 @@
       </g>
     </svg>
   </div>
-  <!-- interactive overlay for ink ripples (captures pointer events) -->
   <div id="ink-interact" class="ink-interact" aria-hidden="false"></div>
+
   <main id="app" class="container">
     <header>
       <div class="title-wrap">
@@ -36,12 +35,12 @@
       <div class="status">
         <div id="points">內功：<span id="points-count">0</span></div>
         <div id="level-badge">等級：<span id="badge">句子學徒</span></div>
-        <div class="progress" title="升級進度"><div id="progress-bar"></div></div>
+        <div class="progress" title="進度"><div id="progress-bar"></div></div>
       </div>
     </header>
 
     <section id="menu" class="panel">
-      <h2>選擇關卡</h2>
+      <h2>任務選單</h2>
       <div class="buttons">
         <button id="prologue-btn">序章</button>
         <button data-action="start" data-level="complete">完整句子功</button>
@@ -55,14 +54,13 @@
       <div class="hint">進度會儲存在本機（localStorage），完成任務可獲得內功等級。</div>
     </section>
 
-    <!-- Wuxia NPC and inner power area -->
     <section id="dojo" class="panel">
       <div class="npc-row">
         <div class="npc">
-          <div id="npc-avatar" class="avatar">🈶</div>
+          <div id="npc-avatar" class="avatar">師</div>
           <div>
             <div id="npc-name">字義師父</div>
-            <div id="npc-bubble" class="bubble">少俠，來答題吧！</div>
+            <div id="npc-bubble" class="bubble">少俠，回答問題。</div>
           </div>
         </div>
 
@@ -70,21 +68,21 @@
           <label for="npc-select" class="small">選擇師父</label>
           <select id="npc-select">
             <option value="master">字義師父（沉穩）</option>
-            <option value="elder">老莊長老（慈祥）</option>
-            <option value="sister">師姊（活潑）</option>
+            <option value="elder">竹杖長老（笑）</option>
+            <option value="sister">師姐（活潑）</option>
           </select>
           <div class="power-box">
             <div class="power-label">內功值 <span id="power-numeric">0/5</span></div>
             <div class="power-bar"><div id="power-bar-fill" style="width:0%"></div></div>
-            <button id="use-skill">使出絕技（消耗 3）</button>
+            <button id="use-skill">使出絕招（消耗 3）</button>
           </div>
-          <div class="status-box small">內功境界：<span id="realm">煉氣</span> · 武力值：<span id="wuli">0</span></div>
+          <div class="status-box small">內功境界：<span id="realm">練氣</span> · 武力值：<span id="wuli">0</span></div>
         </div>
       </div>
     </section>
 
     <section id="game" class="panel hidden">
-      <button id="back">← 返回選單</button>
+      <button id="back">返回選單</button>
       <h2 id="stage-title"></h2>
       <div id="stage-desc"></div>
       <div id="question-area"></div>
@@ -92,16 +90,14 @@
       <div id="feedback" class="feedback"></div>
     </section>
 
-    <!-- Level up modal -->
     <div id="levelup-modal" class="modal hidden">
       <div class="modal-card">
-        <h3>恭喜升級！</h3>
-        <p>你升為：<strong id="modal-badge">句子學徒</strong></p>
+        <h3>升級！</h3>
+        <p>你已達到 <strong id="modal-badge">句子學徒</strong></p>
         <button id="close-modal">繼續修練</button>
       </div>
     </div>
 
-    <!-- Prologue modal -->
     <div id="prologue-modal" class="modal hidden">
       <div class="modal-card">
         <h3 id="prologue-title">序章</h3>
@@ -116,8 +112,8 @@
       <ol>
         <li>山門召令：修成四大句型內功，取得四印。</li>
         <li>破陣尋印：完成完整句子功與因果內功。</li>
-        <li>三步連招：用「先…再…最後…」排列正確步法。</li>
-        <li>心法覺醒：用「我覺得…因為…」說出真心。</li>
+        <li>三步連招：用「先...再...最後...」排列正確步法。</li>
+        <li>心法覺醒：用「我覺得...因為...」說出真心。</li>
         <li>決戰封印：以四句短文封印魔王。</li>
       </ol>
       <h3>師父主線對話</h3>
@@ -134,7 +130,7 @@
     </section>
 
     <section id="quiz20" class="panel">
-      <h2>句型判斷・20 題選擇題</h2>
+      <h2>句型判斷 · 20 題選擇題</h2>
       <div class="meta">選最完整或最正確的句子，再按「提交答案」。</div>
 
       <div class="quiz-question" data-answer="C">
@@ -145,21 +141,21 @@
       </div>
 
       <div class="quiz-question" data-answer="B">
-        <p><strong>2.</strong> 哪一句符合「因為…所以…」？</p>
+        <p><strong>2.</strong> 哪一句符合「因為...所以...」？</p>
         <label class="choice"><input type="radio" name="q2" value="A">A. 因為下雨我沒來。</label>
         <label class="choice"><input type="radio" name="q2" value="B">B. 因為下雨，所以我沒來。</label>
         <label class="choice"><input type="radio" name="q2" value="C">C. 下雨，所以我沒來。</label>
       </div>
 
       <div class="quiz-question" data-answer="B">
-        <p><strong>3.</strong> 哪一句符合「先…再…最後…」？</p>
+        <p><strong>3.</strong> 哪一句符合「先...再...最後...」？</p>
         <label class="choice"><input type="radio" name="q3" value="A">A. 我先吃飯，最後洗手。</label>
         <label class="choice"><input type="radio" name="q3" value="B">B. 我先洗手，再吃飯，最後刷牙。</label>
         <label class="choice"><input type="radio" name="q3" value="C">C. 我吃飯，再洗手。</label>
       </div>
 
       <div class="quiz-question" data-answer="B">
-        <p><strong>4.</strong> 哪一句符合「我覺得…因為…」？</p>
+        <p><strong>4.</strong> 哪一句符合「我覺得...因為...」？</p>
         <label class="choice"><input type="radio" name="q4" value="A">A. 我覺得很累，所以回家。</label>
         <label class="choice"><input type="radio" name="q4" value="B">B. 我覺得很累，因為跑太久。</label>
         <label class="choice"><input type="radio" name="q4" value="C">C. 我跑太久，所以很累。</label>
@@ -222,7 +218,7 @@
       </div>
 
       <div class="quiz-question" data-answer="A">
-        <p><strong>13.</strong> 哪一句最符合「先…再…最後…」？</p>
+        <p><strong>13.</strong> 哪一句最符合「先...再...最後...」？</p>
         <label class="choice"><input type="radio" name="q13" value="A">A. 我先起床，再洗臉，最後吃早餐。</label>
         <label class="choice"><input type="radio" name="q13" value="B">B. 我起床，再洗臉。</label>
         <label class="choice"><input type="radio" name="q13" value="C">C. 我先起床，最後洗臉。</label>
@@ -243,7 +239,7 @@
       </div>
 
       <div class="quiz-question" data-answer="A">
-        <p><strong>16.</strong> 哪一句符合「我覺得…因為…」？</p>
+        <p><strong>16.</strong> 哪一句符合「我覺得...因為...」？</p>
         <label class="choice"><input type="radio" name="q16" value="A">A. 我覺得緊張，因為前方很暗。</label>
         <label class="choice"><input type="radio" name="q16" value="B">B. 我緊張，所以前方很暗。</label>
         <label class="choice"><input type="radio" name="q16" value="C">C. 前方很暗，我覺得。</label>
@@ -287,7 +283,7 @@
     <section id="writing" class="panel">
       <h2>封印魔王小文章</h2>
       <p class="meta">想像：夜色山林、遠處燈火、你與師父並肩而行。請寫四句短文。</p>
-      <div class="meta">提示：至少一句用「因為…所以…」，至少一句用「先…再…最後…」，心情句用「我覺得…因為…」。</div>
+      <div class="meta">提示：至少一句用「因為...所以...」，至少一句用「先...再...最後...」，心情句用「我覺得...因為...」。</div>
       <label>有誰？
         <textarea id="story-who" rows="2" placeholder="例：我和師父在山道上"></textarea>
       </label>
@@ -317,9 +313,10 @@
     </section>
 
     <footer>
-      <small>教學設計 by 字義門 · 適合小學國文寫作練習</small>
+      <small>教學設計 by 字義門 · 國小國文寫作練習</small>
     </footer>
   </main>
+
   <script src="js/story_lines_data.js"></script>
   <script src="js/npc_dialogue_data.js"></script>
   <script src="js/app.js"></script>
