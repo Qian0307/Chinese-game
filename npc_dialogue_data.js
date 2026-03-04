@@ -1,0 +1,38 @@
+// NPC dialogue data (runtime format) — exposes window.NPC_DIALOGUE
+window.NPC_DIALOGUE = {
+  "npc_roles": [
+    {"id": "gatekeeper", "name": "竹林守門人", "focus": "complete"},
+    {"id": "master_inner", "name": "內功師父", "focus": "cause"},
+    {"id": "elder_agility", "name": "輕功長老", "focus": "sequence"},
+    {"id": "heroine", "name": "心法女俠", "focus": "feeling"},
+    {"id": "minion", "name": "魔教小兵", "focus": "choose"},
+    {"id": "chief", "name": "掌門", "focus": "final"}
+  ],
+  "scenes": {
+    "gatekeeper": [
+      {"line": "少俠，你是誰？", "expected": "我是小明。", "hint": "請用完整句：我是 + 名字。"},
+      {"line": "你現在在哪裡？", "expected": "我在竹林裡。", "hint": "請說出地點，例如：在竹林裡。"},
+      {"line": "你在竹林裡做什麼？", "expected": "我在竹林裡練功。", "hint": "請說出你正在做的事。"},
+      {"line": "把剛剛三句合成一句。", "expected": "我是小明，我在竹林裡練功。", "hint": "用逗號或連接詞把三個要素連起來。"}
+    ],
+    "master_inner": [
+      {"line": "為什麼你今天遲到？", "expected": "因為下雨，所以我遲到了。", "hint": "因為...，所以...。記得在所以前加逗號。"},
+      {"line": "為什麼你打不過魔王？", "expected": "因為我太累，所以打不過魔王。", "hint": "說明原因並用所以連接結果。"},
+      {"line": "現在換你問我一句因為...所以...。", "expected": null, "hint": "鼓勵學生主動造句並提問。"}
+    ],
+    "elder_agility": [
+      {"line": "你是怎麼練成輕功的？", "expected": "我先跑步，再跳繩，最後練習飛簷走壁。", "hint": "先...再...最後...。步驟要依時間順序。"},
+      {"line": "你早上起床後做什麼？", "expected": "我先刷牙，再洗臉，最後吃早餐。", "hint": "列出三個步驟，保持順序清晰。"}
+    ],
+    "heroine": [
+      {"line": "打敗魔王後，你覺得怎麼樣？", "expected": "我覺得很開心，因為我成功了。", "hint": "我覺得...，因為...。表達情緒並說明原因。"},
+      {"line": "今天上課，你覺得怎麼樣？", "expected": "我覺得很有趣，因為可以學新東西。", "hint": "用情緒形容詞描述心情，再補上原因。"}
+    ],
+    "minion": [
+      {"line": "魔王來了，你怎麼辦？", "expected": "C", "choices": ["A. 我跑。","B. 我在山洞。","C. 我在山洞裡躲起來。"], "hint": "選出最完整且包含地點與動作的句子。"}
+    ],
+    "chief": [
+      {"line": "請回答以下問題：\n1. 你是誰？\n2. 你在哪裡？\n3. 你在做什麼？\n4. 為什麼來這裡？\n5. 你覺得今天怎麼樣？", "expected": null, "hint": "每句完整，使用至少兩種句型並檢查標點。最後把回答整合成段落寫下。"}
+    ]
+  }
+};
